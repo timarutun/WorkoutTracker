@@ -11,6 +11,10 @@
 		395719F42C157AC800F2B407 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395719F32C157AC800F2B407 /* ContentView.swift */; };
 		395719F62C157ACA00F2B407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395719F52C157ACA00F2B407 /* Assets.xcassets */; };
 		395719F92C157ACA00F2B407 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395719F82C157ACA00F2B407 /* Preview Assets.xcassets */; };
+		397FC4D42C182174007D5F81 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 397FC4D32C182174007D5F81 /* FSCalendar */; };
+		397FC4D62C182187007D5F81 /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D52C182187007D5F81 /* AddWorkoutView.swift */; };
+		397FC4D82C1821B5007D5F81 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D72C1821B5007D5F81 /* Model.swift */; };
+		397FC4DA2C1821CA007D5F81 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		395719F32C157AC800F2B407 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		395719F52C157ACA00F2B407 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		395719F82C157ACA00F2B407 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		397FC4D52C182187007D5F81 /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
+		397FC4D72C1821B5007D5F81 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				397FC4D42C182174007D5F81 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +61,9 @@
 			children = (
 				395719F12C157AC800F2B407 /* WorkoutTrackerApp.swift */,
 				395719F32C157AC800F2B407 /* ContentView.swift */,
+				397FC4D72C1821B5007D5F81 /* Model.swift */,
+				397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */,
+				397FC4D52C182187007D5F81 /* AddWorkoutView.swift */,
 				395719F52C157ACA00F2B407 /* Assets.xcassets */,
 				395719F72C157ACA00F2B407 /* Preview Content */,
 			);
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = WorkoutTracker;
+			packageProductDependencies = (
+				397FC4D32C182174007D5F81 /* FSCalendar */,
+			);
 			productName = WorkoutTracker;
 			productReference = 395719EE2C157AC800F2B407 /* WorkoutTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 395719E52C157AC800F2B407;
+			packageReferences = (
+				397FC4D22C182174007D5F81 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = 395719EF2C157AC800F2B407 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				395719F42C157AC800F2B407 /* ContentView.swift in Sources */,
+				397FC4D62C182187007D5F81 /* AddWorkoutView.swift in Sources */,
+				397FC4DA2C1821CA007D5F81 /* WorkoutManager.swift in Sources */,
 				395719F22C157AC800F2B407 /* WorkoutTrackerApp.swift in Sources */,
+				397FC4D82C1821B5007D5F81 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		397FC4D22C182174007D5F81 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		397FC4D32C182174007D5F81 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 397FC4D22C182174007D5F81 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 395719E62C157AC800F2B407 /* Project object */;
 }
