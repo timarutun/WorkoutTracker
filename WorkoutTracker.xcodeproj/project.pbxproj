@@ -7,24 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3948D28E2C214D650015E719 /* WorkoutTrackerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3948D28C2C214D650015E719 /* WorkoutTrackerModel.xcdatamodeld */; };
+		3948D2912C214E4E0015E719 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948D28F2C214E4E0015E719 /* Workout+CoreDataClass.swift */; };
+		3948D2922C214E4E0015E719 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948D2902C214E4E0015E719 /* Workout+CoreDataProperties.swift */; };
+		3948D2942C214ECF0015E719 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948D2932C214ECF0015E719 /* Exercise.swift */; };
 		395719F22C157AC800F2B407 /* WorkoutTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395719F12C157AC800F2B407 /* WorkoutTrackerApp.swift */; };
 		395719F42C157AC800F2B407 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395719F32C157AC800F2B407 /* ContentView.swift */; };
 		395719F62C157ACA00F2B407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395719F52C157ACA00F2B407 /* Assets.xcassets */; };
 		395719F92C157ACA00F2B407 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395719F82C157ACA00F2B407 /* Preview Assets.xcassets */; };
+		3974AC402C18D5E10080E9AA /* CalendarVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974AC3F2C18D5E10080E9AA /* CalendarVIew.swift */; };
 		397FC4D42C182174007D5F81 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 397FC4D32C182174007D5F81 /* FSCalendar */; };
 		397FC4D62C182187007D5F81 /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D52C182187007D5F81 /* AddWorkoutView.swift */; };
-		397FC4D82C1821B5007D5F81 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D72C1821B5007D5F81 /* Model.swift */; };
 		397FC4DA2C1821CA007D5F81 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3948D28D2C214D650015E719 /* WorkoutTrackerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutTrackerModel.xcdatamodel; sourceTree = "<group>"; };
+		3948D28F2C214E4E0015E719 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3948D2902C214E4E0015E719 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3948D2932C214ECF0015E719 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		395719EE2C157AC800F2B407 /* WorkoutTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395719F12C157AC800F2B407 /* WorkoutTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerApp.swift; sourceTree = "<group>"; };
 		395719F32C157AC800F2B407 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		395719F52C157ACA00F2B407 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		395719F82C157ACA00F2B407 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3974AC3F2C18D5E10080E9AA /* CalendarVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVIew.swift; sourceTree = "<group>"; };
 		397FC4D52C182187007D5F81 /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
-		397FC4D72C1821B5007D5F81 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +51,9 @@
 		395719E52C157AC800F2B407 = {
 			isa = PBXGroup;
 			children = (
+				3948D28F2C214E4E0015E719 /* Workout+CoreDataClass.swift */,
+				3948D2902C214E4E0015E719 /* Workout+CoreDataProperties.swift */,
+				3948D2932C214ECF0015E719 /* Exercise.swift */,
 				395719F02C157AC800F2B407 /* WorkoutTracker */,
 				395719EF2C157AC800F2B407 /* Products */,
 			);
@@ -61,7 +72,8 @@
 			children = (
 				395719F12C157AC800F2B407 /* WorkoutTrackerApp.swift */,
 				395719F32C157AC800F2B407 /* ContentView.swift */,
-				397FC4D72C1821B5007D5F81 /* Model.swift */,
+				3974AC3F2C18D5E10080E9AA /* CalendarVIew.swift */,
+				3948D28C2C214D650015E719 /* WorkoutTrackerModel.xcdatamodeld */,
 				397FC4D92C1821CA007D5F81 /* WorkoutManager.swift */,
 				397FC4D52C182187007D5F81 /* AddWorkoutView.swift */,
 				395719F52C157ACA00F2B407 /* Assets.xcassets */,
@@ -154,11 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3948D2922C214E4E0015E719 /* Workout+CoreDataProperties.swift in Sources */,
+				3974AC402C18D5E10080E9AA /* CalendarVIew.swift in Sources */,
 				395719F42C157AC800F2B407 /* ContentView.swift in Sources */,
 				397FC4D62C182187007D5F81 /* AddWorkoutView.swift in Sources */,
 				397FC4DA2C1821CA007D5F81 /* WorkoutManager.swift in Sources */,
 				395719F22C157AC800F2B407 /* WorkoutTrackerApp.swift in Sources */,
-				397FC4D82C1821B5007D5F81 /* Model.swift in Sources */,
+				3948D2912C214E4E0015E719 /* Workout+CoreDataClass.swift in Sources */,
+				3948D28E2C214D650015E719 /* WorkoutTrackerModel.xcdatamodeld in Sources */,
+				3948D2942C214ECF0015E719 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +399,19 @@
 			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3948D28C2C214D650015E719 /* WorkoutTrackerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3948D28D2C214D650015E719 /* WorkoutTrackerModel.xcdatamodel */,
+			);
+			currentVersion = 3948D28D2C214D650015E719 /* WorkoutTrackerModel.xcdatamodel */;
+			path = WorkoutTrackerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 395719E62C157AC800F2B407 /* Project object */;
 }

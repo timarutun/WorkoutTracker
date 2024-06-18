@@ -6,26 +6,64 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 class WorkoutManager {
     static let shared = WorkoutManager()
     
-    private let workoutsKey = "workouts"
+    private let container: NSPersistentContainer
     
-    func saveWorkout(_ workout: Workout) {
-        var workouts = loadWorkouts()
-        workouts.append(workout)
-        if let data = try? JSONEncoder().encode(workouts) {
-            UserDefaults.standard.set(data, forKey: workoutsKey)
+    private init() {
+        container = NSPersistentContainer(name: "WorkoutTrackerModel")
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Failed to load Core Data stack: \(error)")
+            }
         }
     }
     
-    func loadWorkouts() -> [Workout] {
-        if let data = UserDefaults.standard.data(forKey: workoutsKey),
-           let workouts = try? JSONDecoder().decode([Workout].self, from: data) {
-            return workouts
+    private var context: NSManagedObjectContext {
+        return container.viewContext
+    }
+    
+    func loadWorkouts() -> [WorkoutEntity] {
+        let request: NSFetchRequest<WorkoutEntity> = WorkoutEntity.fetchRequest()
+        do {
+            return try context.fetch(request)
+        } catch {
+            print("Failed to fetch workouts: \(error)")
+            return []
         }
-        return []
+    }
+    
+    func saveWorkout(_ workout: WorkoutEntity) {
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save workout: \(error)")
+        }
+    }
+    
+    func deleteWorkout(_ workout: WorkoutEntity) {
+        context.delete(workout)
+        do {
+            try context.save()
+        } catch {
+            print("Failed to delete workout: \(error)")
+        }
+    }
+    
+    func createWorkout(date: Date, exercises: [Exercise]) -> WorkoutEntity {
+        let workout = WorkoutEntity(context: context)
+        workout.id = UUID()
+        workout.date = date
+        workout.exercises = exercises
+        return workout
     }
 }
+
+
+
+
 

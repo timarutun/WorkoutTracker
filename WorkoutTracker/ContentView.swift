@@ -6,26 +6,37 @@
 //
 
 import SwiftUI
-import FSCalendar
 
 struct ContentView: View {
     @State private var selectedDate = Date()
-    @State private var workouts: [Workout] = WorkoutManager.shared.loadWorkouts()
+    @State private var workouts: [WorkoutEntity] = WorkoutManager.shared.loadWorkouts()
     @State private var showingAddWorkoutView = false
+    @State private var isCalendarExpanded = false
     
     var body: some View {
         NavigationView {
-            VStack {
-                FSCalendarWrapper(selectedDate: $selectedDate)
-                    .frame(height: 300)
+            VStack(spacing: 0) { 
+                CalendarView(selectedDate: $selectedDate, isExpanded: $isCalendarExpanded)
+                    .frame(height: isCalendarExpanded ? 300 : 150)
+                Button(action: {
+                    withAnimation {
+                        isCalendarExpanded.toggle()
+                    }
+                }) {
+                    Text(isCalendarExpanded ? "Show Less" : "Show More")
+                        .foregroundColor(.blue)
+                }
+                .padding(.top, 5)
+                
                 List {
                     ForEach(workoutsForSelectedDate) { workout in
                         VStack(alignment: .leading) {
-                            ForEach(workout.exercises) { exercise in
+                            ForEach(workout.exercises ?? []) { exercise in
                                 Text("\(exercise.name): \(exercise.sets) sets, \(exercise.weight, specifier: "%.1f") kg")
                             }
                         }
                     }
+                    .onDelete(perform: deleteWorkout)
                 }
             }
             .navigationTitle("Workouts")
@@ -40,48 +51,18 @@ struct ContentView: View {
         }
     }
     
-    var workoutsForSelectedDate: [Workout] {
+    var workoutsForSelectedDate: [WorkoutEntity] {
         return workouts.filter {
-            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+            Calendar.current.isDate($0.date!, inSameDayAs: selectedDate)
         }
     }
-}
-
-struct FSCalendarWrapper: UIViewRepresentable {
-    @Binding var selectedDate: Date
     
-    func makeUIView(context: Context) -> FSCalendar {
-        let calendar = FSCalendar()
-        calendar.delegate = context.coordinator
-        calendar.dataSource = context.coordinator
-        return calendar
-    }
-    
-    func updateUIView(_ uiView: FSCalendar, context: Context) {
-        uiView.reloadData()
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
-        var parent: FSCalendarWrapper
-        
-        init(_ parent: FSCalendarWrapper) {
-            self.parent = parent
-        }
-        
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            parent.selectedDate = date
-        }
-        
-        func minimumDate(for calendar: FSCalendar) -> Date {
-            return Calendar.current.date(byAdding: .year, value: -1, to: Date()) ?? Date()
-        }
-        
-        func maximumDate(for calendar: FSCalendar) -> Date {
-            return Calendar.current.date(byAdding: .year, value: 1, to: Date()) ?? Date()
+    private func deleteWorkout(at offsets: IndexSet) {
+        let workoutsForSelectedDate = self.workoutsForSelectedDate
+        offsets.forEach { index in
+            let workout = workoutsForSelectedDate[index]
+            WorkoutManager.shared.deleteWorkout(workout)
+            self.workouts = WorkoutManager.shared.loadWorkouts()
         }
     }
 }

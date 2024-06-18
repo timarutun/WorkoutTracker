@@ -9,58 +9,50 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var workouts: [Workout]
+    @Binding var workouts: [WorkoutEntity]
     @Binding var selectedDate: Date
-    
-    @State private var exercises: [Exercise] = []
-    @State private var newExerciseName = ""
-    @State private var newSets = ""
-    @State private var newWeight = ""
-    
+    @State private var exerciseName = ""
+    @State private var sets = ""
+    @State private var weight = ""
+
     var body: some View {
         NavigationView {
             Form {
-                DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                Section(header: Text("Exercise")) {
+                    TextField("Name", text: $exerciseName)
+                    TextField("Sets", text: $sets)
+                        .keyboardType(.numberPad)
+                    TextField("Weight", text: $weight)
+                        .keyboardType(.decimalPad)
+                }
                 
-                Section(header: Text("Exercises")) {
-                    ForEach(exercises) { exercise in
-                        Text("\(exercise.name): \(exercise.sets) sets, \(exercise.weight, specifier: "%.1f") kg")
-                    }
-                    HStack {
-                        TextField("Exercise Name", text: $newExerciseName)
-                        TextField("Sets", text: $newSets)
-                            .keyboardType(.numberPad)
-                        TextField("Weight", text: $newWeight)
-                            .keyboardType(.decimalPad)
-                        Button(action: addExercise) {
-                            Image(systemName: "plus.circle.fill")
-                        }
-                        .disabled(newExerciseName.isEmpty || newSets.isEmpty || newWeight.isEmpty)
-                    }
+                Button(action: addWorkout) {
+                    Text("Add Workout")
                 }
             }
-            .navigationTitle("Add Workout")
-            .navigationBarItems(trailing: Button("Save") {
-                saveWorkout()
+            .navigationBarTitle("Add Workout")
+            .navigationBarItems(leading: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
             })
         }
     }
-    
-    private func addExercise() {
-        if let sets = Int(newSets), let weight = Double(newWeight) {
-            let exercise = Exercise(name: newExerciseName, sets: sets, weight: weight)
-            exercises.append(exercise)
-            newExerciseName = ""
-            newSets = ""
-            newWeight = ""
+
+    private func addWorkout() {
+        guard let sets = Int(sets),
+              let weight = Double(weight) else {
+            // Show some error message to the user if needed
+            return
         }
-    }
-    
-    private func saveWorkout() {
-        let workout = Workout(date: selectedDate, exercises: exercises)
-        workouts.append(workout)
-        WorkoutManager.shared.saveWorkout(workout)
+
+        let newExercise = Exercise(name: exerciseName, sets: sets, weight: weight)
+        let newWorkout = WorkoutManager.shared.createWorkout(date: selectedDate, exercises: [newExercise])
+        WorkoutManager.shared.saveWorkout(newWorkout)
+        workouts = WorkoutManager.shared.loadWorkouts()
+
+        presentationMode.wrappedValue.dismiss()
     }
 }
+
+
+
 
